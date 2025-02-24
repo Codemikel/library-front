@@ -35,18 +35,21 @@ export const createLoan = async (loan: Omit<Loan, 'id'>): Promise<Loan> => {
 };
 
 // Actualizar un libro existente
-export const updateLoan = async (id: number, loan: Loan): Promise<Loan> => {
-  const response = await fetch(`${API_URL}/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(loan),
-  });
-  if (!response.ok) {
-    throw new Error('Error al actualizar el libro');
+export const updateLoan = async (id: number, loan: Loan) => {
+  if (confirm('¿Está seguro de finalizar el prestamo?')) {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loan),
+    });
+    alert('Prestamo finalizado');
+    if (!response.ok) {
+      throw new Error('Error al actualizar el libro');
+    }
+    return response.json();
   }
-  return response.json();
 };
 
 // Eliminar un libro

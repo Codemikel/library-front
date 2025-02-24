@@ -3,11 +3,8 @@
       <div class="col-span-3">
         <h1 class="text-center text-2xl font-bold">Prestamos</h1>
       </div>
-      <div class="col-span-2">
+      <div class="col-span-3">
         <LoanList :loans="loans" />
-      </div>
-      <div class="col-span-1">
-        
       </div>
     </div>
 </template>

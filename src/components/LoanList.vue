@@ -19,7 +19,13 @@
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
                         <p
                             class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
-                            Fecha de salida
+                            Fecha de prestamo
+                        </p>
+                    </th>
+                    <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
+                        <p
+                            class="block font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70">
+                            Fecha de devolución
                         </p>
                     </th>
                     <th class="p-4 border-b border-blue-gray-100 bg-blue-gray-50">
@@ -57,6 +63,17 @@
                             {{ loan.return_date }}
                         </p>
                     </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                        <p class="block font-sans text-sm antialiased font-normal leading-normal text-blue-gray-900">
+                            {{ loan.returned ? loan.updated_at : 'Libro sin regresar' }}
+                        </p>
+                    </td>
+                    <td class="p-4 border-b border-blue-gray-50">
+                        <button v-if="!loan.returned" @click="updateLoan(loan.id, loan)"
+                            class="block font-sans text-sm antialiased font-medium leading-normal text-blue-gray-900">
+                            Registrar devolución
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -65,6 +82,7 @@
 
 <script setup lang="ts">
 import type { Loan } from '../models/Loan';
+import { updateLoan } from '../services/loanService';
 
 defineProps<{
     loans: Loan[];
