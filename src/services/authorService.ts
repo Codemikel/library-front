@@ -10,3 +10,31 @@ export const getAuthors = async (): Promise<Author[]> => {
   }
   return response.json();
 };
+
+export const createAuthor = async (author: Omit<Author, 'id'>): Promise<Author> => {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(author),
+  });
+  if (!response.ok) {
+    throw new Error('Error al crear el libro');
+  }
+  return response.json();
+};
+
+// Eliminar un autor
+export const deleteAuthor = async (id: number): Promise<void> => {
+  if (confirm('¿Está seguro de eliminar el autor?')) {
+    
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al eliminar el autor');
+    }
+  }
+};
