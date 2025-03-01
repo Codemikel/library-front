@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="submitForm" class="bg-white p-3 rounded-xl shadow-md">
-    <h2 class="text-xl text-center font-bold mb-2">Agregar libros</h2>
+    <h2 class="text-xl text-center font-bold mb-2">Agregar autores</h2>
     <div class="grid gap-6 mb-6 md:grid-cols-1">
       <div>
         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">
