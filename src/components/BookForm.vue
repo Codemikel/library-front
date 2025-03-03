@@ -73,9 +73,7 @@
   });
   
   // Emitir eventos al componente padre
-  const emit = defineEmits<{
-    (event: 'book-created', book: any): void;
-  }>();
+  const emit = defineEmits<(event: 'book-created', book: any) => void>();
   
   // Obtener la lista de autores
   const fetchAuthors = async () => {

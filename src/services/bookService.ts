@@ -51,10 +51,13 @@ export const updateBook = async (id: number, book: Book): Promise<Book> => {
 
 // Eliminar un libro
 export const deleteBook = async (id: number): Promise<void> => {
-  const response = await fetch(`${API_URL}/${id}`, {
-    method: 'DELETE',
-  });
-  if (!response.ok) {
-    throw new Error('Error al eliminar el libro');
+  if (confirm('¿Está seguro de eliminar el libro?')) {
+    const response = await fetch(`${API_URL}/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error('Error al eliminar el libro');
+    }
+    alert('Libro eliminado exitosamente')
   }
 };
