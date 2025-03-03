@@ -1,9 +1,9 @@
 <template>
-  <div class="grid grid-cols-3 gap-6 mx-3">
+  <div class="lg:grid grid-cols-3 gap-6 mx-3">
     <div class="col-span-3">
       <h1 class="text-center text-2xl font-bold">Autores</h1>
     </div>
-    <div class="col-span-2">
+    <div class="col-span-2 mb-5">
       <AuthorList :authors="authors" />
     </div>
     <div class="col-span-1">
