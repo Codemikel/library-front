@@ -2,7 +2,7 @@ import type { Author } from './Author';
 import type { Genre } from './Genre';
 
 export interface Book {
-    id?: number;
+    id: number;
     name: string;
     author_id: number;
     genre_id: number;
